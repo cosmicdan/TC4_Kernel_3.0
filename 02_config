@@ -1,0 +1,2 @@
+#ARCH=arm CROSS_COMPILE=~/toolchains/arm-2009q3-67-4.4.1/bin/arm-none-linux-gnueabi- make menuconfig
+ARCH=arm CROSS_COMPILE=~/toolchains/arm-unknown-linux-gnueabi-linaro_4.7.4-2013.11/bin/arm-gnueabi- make menuconfig

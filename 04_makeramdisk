@@ -1,0 +1,12 @@
+cd _ramdisk
+find . | cpio -o -H newc | gzip > ../_encrypt/ramdisk.cpio.gz
+cd ../_encrypt
+mkimage -A ARM -O Linux -T ramdisk -C none -a 0x41000000 -e 0x41000000 -n ramdisk -d ./ramdisk.cpio.gz ramdisk-uboot.img
+rm ./ramdisk.cpio.gz
+./add_padding ./ramdisk-uboot.img 2096896
+./codesigner_v21 -v2.1 ramdisk-uboot.img ramdisk.img stage2Key_V21.prv -STAGE2
+rm ramdisk-uboot.img
+if [ ! -d "../_out" ]; then mkdir ../_out; fi
+mv ramdisk.img ../_out/
+cd ..
+echo "[i] ./_out/ramdisk.img done"
