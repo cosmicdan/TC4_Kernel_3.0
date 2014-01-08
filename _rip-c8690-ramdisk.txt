@@ -1,0 +1,7 @@
+Note to self: How to unpack C8690 RAMDisk 
+
+1) Manually strip trailing signature as well as all whitespace before it, but be sure to leave 1 byte of trailing nul data.
+2) Strip first 64 bytes (uboot header):
+dd if=./ramdisk-uboot.img of=./ramdisk.cpio.gz bs=64 skip=1
+3) Done, now the usual unpack to current folder:
+gzip -dc ../ramdisk-uboot.rip.gz | cpio -i
