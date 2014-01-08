@@ -60,7 +60,6 @@ static inline void putback_lru_pages(struct list_head *l) {}
 #ifndef CONFIG_DMA_CMA
 static inline int migrate_pages(struct list_head *l, new_page_t x,
 		unsigned long private, bool offlining,
-<<<<<<< HEAD
 		bool sync) { return -ENOSYS; }
 #else
 static inline int migrate_pages(struct list_head *l, new_page_t x,
@@ -71,9 +70,6 @@ static inline int migrate_replace_cma_page(struct page *oldpage,
 		struct page **newpage) { return -ENOSYS; }
 #endif
 
-=======
-		enum migrate_mode mode) { return -ENOSYS; }
->>>>>>> 54ea5b40f067cf098cac639973c6628c6944cfb2
 static inline int migrate_huge_pages(struct list_head *l, new_page_t x,
 		unsigned long private, bool offlining,
 		enum migrate_mode mode) { return -ENOSYS; }
