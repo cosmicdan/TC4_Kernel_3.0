@@ -1,7 +1,7 @@
 #!/system/bin/sh
 
 # New driver allows MAC address changing via /system/etc/wifi/bcmdhd.cal
-/system/bin/insmod /modules/bcmdhd.ko
+#/system/bin/insmod /modules/bcmdhd.ko
 
 # [CosmicDan] Nothing else is needed anymore but I'll leave it commented-out for reference.
 
