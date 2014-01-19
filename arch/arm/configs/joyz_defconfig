@@ -1190,6 +1190,13 @@ CONFIG_WIFI_CONTROL_FUNC=y
 # CONFIG_B43 is not set
 # CONFIG_B43LEGACY is not set
 # CONFIG_BCM4329 is not set
+CONFIG_BCMDHD=y
+CONFIG_BCMDHD_FW_PATH="/system/etc/wifi/fw_bcmdhd.bin"
+CONFIG_BCMDHD_NVRAM_PATH="/system/etc/wifi/bcmdhd.cal"
+CONFIG_DHD_USE_STATIC_BUF=y
+# CONFIG_DHD_USE_SCHED_SCAN is not set
+CONFIG_BCM_WIFI_PREMEM=y
+CONFIG_BCMDHD_WIFI=y
 # CONFIG_HOSTAP is not set
 # CONFIG_IWM is not set
 # CONFIG_LIBERTAS is not set
