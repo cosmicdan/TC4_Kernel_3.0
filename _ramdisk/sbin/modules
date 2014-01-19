@@ -1,43 +1,4 @@
 #!/system/bin/sh
 
-# New driver allows MAC address changing via /system/etc/wifi/bcmdhd.cal
-#/system/bin/insmod /modules/bcmdhd.ko
-
-# [CosmicDan] Nothing else is needed anymore but I'll leave it commented-out for reference.
-
-#/system/bin/insmod /modules/lsm330dlc_acc.ko
-#/system/bin/insmod /modules/lsm330dlc_gyr.ko
-#/system/bin/insmod /modules/ltr558.ko
-#/system/bin/insmod /modules/radio-ar1000.ko
-#/system/bin/insmod /modules/akm8963.ko
-
-# compass
-#chown system:system /dev/akm8963_dev
-#chown system:system /sys/class/compass/akm8963/enable_acc
-#chown system:system /sys/class/compass/akm8963/enable_mag
-#chown system:system /sys/class/compass/akm8963/enable_ori
-#chown system:system /sys/class/compass/akm8963/delay_acc
-#chown system:system /sys/class/compass/akm8963/delay_mag
-#chown system:system /sys/class/compass/akm8963/delay_ori
-#chown system:system /sys/class/compass/akm8963/accel
-#chmod 0660 /dev/akm8963_dev
-#chmod 0660 /sys/class/compass/akm8963/enable_acc
-#chmod 0660 /sys/class/compass/akm8963/enable_mag
-#chmod 0660 /sys/class/compass/akm8963/enable_ori
-#chmod 0660 /sys/class/compass/akm8963/delay_acc
-#chmod 0660 /sys/class/compass/akm8963/delay_mag
-#chmod 0660 /sys/class/compass/akm8963/delay_ori
-#chmod 0660 /sys/class/compass/akm8963/accel
-#stop akmd
-#start akmd
-
-# fm radio
-#chmod 0777 /dev/radio0
-#chmod 0777 /sys/class/ar1000/ar1000/enable
-#chmod 0777 /sys/class/ar1000/ar1000/freq
-
-# etc.
-#chown system:system /sys/module/ltr558/*
-#chown system:system /sys/module/lsm330dlc_acc/*
-#chown system:system /sys/module/lsm330dlc_gyr/*
-
+# Nothing here, move along.
+#
