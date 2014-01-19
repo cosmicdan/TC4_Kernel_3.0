@@ -908,24 +908,22 @@ strtol(const char *nptr)
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 35))
 int wifi_get_mac_addr(unsigned char *buf)
 {
-	DHD_ERROR(("%s\n", __FUNCTION__));
 // Cellon add start, Ted Shi, 2012/10/20, for add wifi MAC
 	int i;
 	char wifi_mac[6];
 // Cellon add end, Ted Shi, 2012/10/20
+	DHD_ERROR(("%s\n", __FUNCTION__));
 	if (!buf)
 		return -EINVAL;
 	if (wifi_control_data && wifi_control_data->get_mac_addr) {
 		return wifi_control_data->get_mac_addr(buf);
 	}
 // Cellon add start, Ted Shi, 2012/10/20, for add wifi MAC
-	/*
 	printk("%s : set mac = %s len = %d \n", __FUNCTION__, mac_addr, strlen(mac_addr));
 	for(i=0;i<strlen(mac_addr);i++){
 		printk("%s, %x  \n", __FUNCTION__, mac_addr[i]);
 		printk("%s: %x \n",__FUNCTION__,strtol(&mac_addr[i]));
 	}
-	*/
 	if (mac_addr[0] != '\0') {
 		wifi_mac[0] = (strtol(&mac_addr[0]) << 4) | strtol(&mac_addr[1]);
 		wifi_mac[1] = (strtol(&mac_addr[2]) << 4) | strtol(&mac_addr[3]);

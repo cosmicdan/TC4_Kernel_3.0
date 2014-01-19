@@ -3511,37 +3511,16 @@ dhd_preinit_ioctls(dhd_pub_t *dhd)
 #endif /* PROP_TXSTATUS */
 	DHD_TRACE(("Enter %s\n", __FUNCTION__));
 	dhd->op_mode = 0;
-#ifdef GET_CUSTOM_MAC_ENABLE
-	ret = dhd_custom_get_mac_address(ea_addr.octet);
-	if (!ret) {
-		// Cellon add start, Ted Shi, 2012/10/20, for add wifi MAC
-		//printk("%s %s \n",__func__,ea_addr.octet);
-		memcpy(dhd->mac.octet, (void *)&ea_addr, ETHER_ADDR_LEN);
-		// Cellon add end, Ted Shi, 2012/10/20
-		memset(buf, 0, sizeof(buf));
-		bcm_mkiovar("cur_etheraddr", (void *)&ea_addr, ETHER_ADDR_LEN, buf, sizeof(buf));
-		ret = dhd_wl_ioctl_cmd(dhd, WLC_SET_VAR, buf, sizeof(buf), TRUE, 0);
-		if (ret < 0) {
-			DHD_ERROR(("%s: can't set MAC address , error=%d\n", __FUNCTION__, ret));
-			return BCME_NOTUP;
-		}
-		memcpy(dhd->mac.octet, ea_addr.octet, ETHER_ADDR_LEN);
-	} else {
-#endif /* GET_CUSTOM_MAC_ENABLE */
-		/* Get the default device MAC address directly from firmware */
-		memset(buf, 0, sizeof(buf));
-		bcm_mkiovar("cur_etheraddr", 0, 0, buf, sizeof(buf));
-		if ((ret = dhd_wl_ioctl_cmd(dhd, WLC_GET_VAR, buf, sizeof(buf),
-			FALSE, 0)) < 0) {
-			DHD_ERROR(("%s: can't get MAC address , error=%d\n", __FUNCTION__, ret));
-			return BCME_NOTUP;
-		}
-		/* Update public MAC address after reading from Firmware */
-		memcpy(dhd->mac.octet, buf, ETHER_ADDR_LEN);
-
-#ifdef GET_CUSTOM_MAC_ENABLE
+    /* Get the default device MAC address directly from firmware */
+	memset(buf, 0, sizeof(buf));
+	bcm_mkiovar("cur_etheraddr", 0, 0, buf, sizeof(buf));
+	if ((ret = dhd_wl_ioctl_cmd(dhd, WLC_GET_VAR, buf, sizeof(buf),
+		FALSE, 0)) < 0) {
+		DHD_ERROR(("%s: can't get MAC address , error=%d\n", __FUNCTION__, ret));
+		return BCME_NOTUP;
 	}
-#endif /* GET_CUSTOM_MAC_ENABLE */
+	/* Update public MAC address after reading from Firmware */
+	memcpy(dhd->mac.octet, buf, ETHER_ADDR_LEN);
 
 	DHD_TRACE(("Firmware = %s\n", fw_path));
 
